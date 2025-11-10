@@ -26,15 +26,15 @@
 При первом запуске будет создана директория data (если отсутствует).
 
 Пример команд
-	register 					имя пароль	регистрация пользователя
-	login 						имя	вход (пароль будет запрошен)
-	addcat FOOD					добавить категорию FOOD
-	setbudget FOOD 200			установить бюджет 200 на FOOD
-	income 300 GENERAL зарплата	добавить доход
-	expense 50 FOOD groceries	расход 50 по категории FOOD
-	summary						полный отчёт
-	saveout report.txt			экспорт отчёта в файл
-	exit						выход с сохранением кошелька
+	register имя пароль				регистрация пользователя
+	login имя						вход (пароль будет запрошен)
+	addcat FOOD						добавить категорию FOOD
+	setbudget FOOD 200				установить бюджет 200 на FOOD
+	income 300 GENERAL зарплата		добавить доход
+	expense 50 FOOD groceries		расход 50 по категории FOOD
+	summary							полный отчёт
+	saveout report.txt				экспорт отчёта в файл
+	exit							выход с сохранением кошелька
 	
 Пример сценария
 	register ivan qwerty123
@@ -52,3 +52,4 @@
 
 mvn clean test
 mvn test
+
