@@ -39,7 +39,7 @@ public class UrlInfo
         this.AuthorId = authorId;
         this.LinkOpens = 0;
         this.ShortUrl = createShortUrl(fullUrl, authorId);
-        Files.writeString(csvPath, this.fieldsToString(),  StandardOpenOption.APPEND);
+        Files.writeString(csvPath, this.fieldsToString(),  StandardOpenOption.APPEND, StandardOpenOption.CREATE);
     }
     public static UrlInfo TryGetUrl (UUID authorId, String shortUrl) throws Exception {
         var temp = GetAllInfo().stream().filter(item-> item.ShortUrl.equals(shortUrl) && item.AuthorId.equals(authorId)).findFirst().orElse(null);
@@ -63,7 +63,7 @@ public class UrlInfo
         list.removeIf(item-> item.fieldsToString().equals(url.fieldsToString()));
         Files.writeString(csvPath, "");
         for(var item :list){
-            Files.writeString(csvPath, item.fieldsToString(), StandardOpenOption.APPEND);
+            Files.writeString(csvPath, item.fieldsToString(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
         }
     }
     private static void UpdateCounter(UrlInfo url) throws Exception {
@@ -73,7 +73,7 @@ public class UrlInfo
         list.add(url);
         Files.writeString(csvPath, "");
         for(var item :list){
-            Files.writeString(csvPath, item.fieldsToString(), StandardOpenOption.APPEND);
+            Files.writeString(csvPath, item.fieldsToString(), StandardOpenOption.APPEND, StandardOpenOption.CREATE);
         }
     }
     public void Open() throws Exception {
@@ -93,7 +93,7 @@ public class UrlInfo
         return list;
     }
 
-    private static String createShortUrl(String fullUrl, UUID userId) throws Exception{
+    public static String createShortUrl(String fullUrl, UUID userId) throws Exception{
         var stringToHash = userId.toString()+fullUrl;
         var digest = MessageDigest.getInstance("SHA-256");
         var hashBytes = digest.digest(stringToHash.getBytes());
