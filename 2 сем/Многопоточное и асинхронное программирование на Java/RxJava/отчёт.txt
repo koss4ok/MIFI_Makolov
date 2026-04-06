@@ -1,0 +1,162 @@
+RxMini (учебная реализация RxJava-подобных реактивных потоков)
+
+1) Архитектура реализованной системы
+
+Реализация находится в пакете `rxmini` и имитирует ключевые концепции RxJava:
+
+1.1. Ядро реактивных типов
+- `rxmini.core.Observer<T>`
+  - `onNext(T item)` — получение элементов потока.
+  - `onError(Throwable t)` — обработка ошибок.
+  - `onComplete()` — сигнал завершения.
+- `rxmini.core.Observable<T>`
+  - `subscribe(Observer)` — подписка на поток с возвратом `Disposable`.
+  - `static create(Consumer<Emitter<T>>)` — создание источника, который вручную генерирует `onNext/onError/onComplete`.
+  - операторы, реализованные как обёртки над `Observable`:
+    - `map(...)`
+    - `filter(...)`
+    - `flatMap(...)`
+    - `subscribeOn(...)`
+    - `observeOn(...)`
+- `rxmini.core.Emitter<T>` — интерфейс, передаваемый в `Observable.create(...)`.
+  Позволяет отправлять события в созданный Observable и поддерживает отмену через `Disposable`.
+
+1.2. Управление подписками
+- `rxmini.core.Disposable`
+  - `dispose()` — отмена подписки.
+  - `isDisposed()` — проверка состояния.
+- `rxmini.core.disposables.DisposableImpl`
+  - простая реализация флага отмены.
+- `rxmini.core.disposables.CompositeDisposable`
+  - хранит набор `Disposable` и отменяет все при `dispose()`.
+  - используется, например, в `flatMap`, чтобы корректно отменять все активные inner-подписки.
+
+1.3. Операторы (преобразования и маршрутизация событий)
+- `rxmini.core.operators.MapObservable`
+  - применяет функцию `mapper` к каждому элементу.
+  - исключения из `mapper` переводятся в `onError`.
+- `rxmini.core.operators.FilterObservable`
+  - применяет `predicate` и пропускает только подходящие элементы.
+  - исключения из `predicate` переводятся в `onError`.
+- `rxmini.core.operators.FlatMapObservable`
+  - для каждого элемента upstream создаёт inner `Observable`.
+  - завершение (`onComplete`) downstream происходит только когда:
+    - upstream завершился, и
+    - завершились все inner.
+  - ошибка (`onError`) downstream немедленно пробрасывается, а активные подписки отменяются через `CompositeDisposable`.
+- `rxmini.core.operators.SubscribeOnObservable`
+  - выполняет подписку (и генерацию элементов) в заданном scheduler.
+- `rxmini.core.operators.ObserveOnObservable`
+  - доставляет `onNext/onError/onComplete` downstream через scheduler.
+
+1.4. Планирование выполнения (Schedulers)
+- `rxmini.core.schedulers.Scheduler`
+  - единственный метод `execute(Runnable task)`.
+- реализации:
+  - `IOThreadScheduler` — `Executors.newCachedThreadPool()` (пул под IO-нагрузку, динамически разрастается).
+  - `ComputationScheduler` — `Executors.newFixedThreadPool(...)` (пул под CPU/вычисления).
+  - `SingleThreadScheduler` — `Executors.newSingleThreadExecutor()` (выполнение строго в одном потоке).
+
+2) Принципы работы Schedulers, их различия и области применения
+
+2.1. subscribeOn(scheduler)
+`subscribeOn` задаёт поток, в котором выполняется подписка на upstream.
+Практический смысл:
+- источник (`Observable.create`) и продакшн-логика начинают исполняться через `scheduler.execute(...)`;
+- downstream подписчик начнёт получать элементы только после старта работы upstream в scheduler-потоке.
+
+2.2. observeOn(scheduler)
+`observeOn` задаёт поток, в котором будут вызываться методы `Observer` ниже по цепочке.
+Практический смысл:
+- преобразования/генерация могут происходить в upstream потоке;
+- но доставка событий (`onNext`, а также терминальные сигналы `onError/onComplete`) выполняется через `scheduler.execute(...)`.
+
+2.3. Отличия scheduler’ов
+- `IOThreadScheduler`
+  - Cached thread pool подходит для задач с IO-ожиданием (много блокировок/ожиданий).
+- `ComputationScheduler`
+  - Fixed thread pool фиксирует число потоков, подходит для вычислительных задач и контроля параллелизма.
+- `SingleThreadScheduler`
+  - Один поток гарантирует последовательность выполнения доставки/обработки в рамках цепочки.
+
+3) Процесс тестирования и основные сценарии
+
+Тестирование выполнено на JUnit 5 в директории:
+`RxJava/src/test/java/rxmini/tests/`
+
+Основные проверяемые сценарии:
+3.1. Базовая работа источника
+- `create` должен:
+  - корректно вызывать `onNext` для каждого элемента
+  - корректно вызывать `onComplete` по завершении.
+
+3.2. Обработка ошибок
+- ошибки, отправленные источником (`emitter.onError`), должны попадать в `Observer.onError`.
+- исключения внутри операторов (`map`/`filter`) должны переводить поток в `onError`.
+- `observeOn` должен доставлять ошибки в заданный scheduler-поток.
+
+3.3. Операторы преобразования
+- `map` должен трансформировать элементы.
+- `filter` должен пропускать только подходящие элементы.
+
+3.4. flatMap
+- downstream должен получить `onComplete` только после:
+  - завершения upstream и
+  - завершения всех созданных inner Observable.
+
+3.5. Disposable и отмена
+- `Disposable.dispose()` должен прекращать дальнейшую генерацию элементов (источник обязан проверять `emitter.isDisposed()`).
+
+3.6. Schedulers (многопоточные проверки)
+- `observeOn` должен делать delivery событий на потоке, управляемом scheduler’ом.
+- `subscribeOn` должен стартовать работу upstream на потоке scheduler’а.
+
+Как запускать тестирование
+- `mvn test`
+
+4) Примеры использования реализованной библиотеки
+
+4.1. Базовый пример: create + map + filter
+Пример (фрагмент):
+```java
+Observable<Integer> source = Observable.create(emitter -> {
+    emitter.onNext(1);
+    emitter.onNext(2);
+    emitter.onComplete();
+});
+
+source
+  .map(x -> x * 2)
+  .filter(x -> x % 4 == 0)
+  .subscribe(new Observer<Integer>() {
+      @Override public void onNext(Integer item) { }
+      @Override public void onError(Throwable t) { }
+      @Override public void onComplete() { }
+  });
+```
+
+4.2. Потоки: observeOn и subscribeOn
+```java
+Scheduler single = new SingleThreadScheduler();
+
+source
+  .subscribeOn(single)  // подписка/генерация в single-потоке
+  .observeOn(single)    // доставка onNext/onComplete тоже в single-потоке
+  .subscribe(observer);
+```
+
+4.3. flatMap для разворачивания внутренних потоков
+```java
+Observable<String> upstream = Observable.create(emitter -> {
+    emitter.onNext("A");
+    emitter.onNext("B");
+    emitter.onComplete();
+});
+
+upstream
+  .flatMap(v -> Observable.create(e -> {
+      e.onNext(v + "1");
+      e.onComplete();
+  }))
+  .subscribe(observer);
+```
