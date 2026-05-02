@@ -1,0 +1,7 @@
+/.idea/
+/target/
+*.iml
+*.log
+/otp-codes.log
+/notifications-outbox/
+/out/
