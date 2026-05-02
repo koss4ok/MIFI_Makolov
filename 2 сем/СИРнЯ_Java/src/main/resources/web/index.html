@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MAKOLOV-otp Client</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+<main class="container">
+    <h1>MAKOLOV-otp</h1>
+
+    <section class="card">
+        <h2>Настройки</h2>
+        <label>Base URL
+            <input id="baseUrl" type="text" value="http://localhost:8080">
+        </label>
+        <label>Токен (Bearer)
+            <input id="token" type="text" placeholder="JWT токен после логина">
+        </label>
+        <div class="row">
+            <button id="saveToken">Сохранить токен</button>
+            <button id="clearToken" class="secondary">Очистить</button>
+        </div>
+    </section>
+
+    <section class="card">
+        <h2>Регистрация</h2>
+        <label>Логин <input id="regLogin" type="text" value="user1"></label>
+        <label>Пароль <input id="regPassword" type="password" value="123456"></label>
+        <label>Роль
+            <select id="regRole">
+                <option value="USER">USER</option>
+                <option value="ADMIN">ADMIN</option>
+            </select>
+        </label>
+        <button id="registerBtn">Зарегистрировать</button>
+    </section>
+
+    <section class="card">
+        <h2>Логин</h2>
+        <label>Логин <input id="login" type="text" value="user1"></label>
+        <label>Пароль <input id="password" type="password" value="123456"></label>
+        <button id="loginBtn">Войти</button>
+        <p class="hint">После логина JWT-токен сохранится автоматически</p>
+    </section>
+
+    <section class="card">
+        <h2>OTP генерация</h2>
+        <label>Operation ID <input id="genOperationId" type="text" value="op-1"></label>
+        <label>Канал
+            <select id="genChannel">
+                <option value="file">file</option>
+                <option value="email">email</option>
+                <option value="sms">sms</option>
+                <option value="telegram">telegram</option>
+            </select>
+        </label>
+        <label>Destination <input id="genDestination" type="text" value="local"></label>
+        <button id="generateBtn">Сгенерировать OTP</button>
+    </section>
+
+    <section class="card">
+        <h2>OTP валидация</h2>
+        <label>Operation ID <input id="valOperationId" type="text" value="op-1"></label>
+        <label>Код <input id="valCode" type="text" placeholder="код из otp-codes.log"></label>
+        <button id="validateBtn">Проверить OTP</button>
+    </section>
+
+    <section class="card">
+        <h2>Админ</h2>
+        <label>Длина кода <input id="cfgLength" type="number" value="6"></label>
+        <label>TTL (сек) <input id="cfgTtl" type="number" value="120"></label>
+        <div class="row">
+            <button id="updateConfigBtn">Обновить конфиг</button>
+            <button id="listUsersBtn">Список пользователей</button>
+        </div>
+        <label>User ID для удаления <input id="deleteUserId" type="number" value="2"></label>
+        <button id="deleteUserBtn" class="danger">Удалить пользователя</button>
+    </section>
+
+    <section class="card log">
+        <h2>Ответ сервера</h2>
+        <pre id="output">Готово к работе.</pre>
+    </section>
+</main>
+
+<script src="/app.js"></script>
+</body>
+</html>
