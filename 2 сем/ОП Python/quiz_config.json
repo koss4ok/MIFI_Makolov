@@ -1,0 +1,156 @@
+{
+  "animals": [
+    {
+      "id": "porcupine",
+      "name": "Дикобраз",
+      "description": "Ты выбираешь спокойствие и умение защищаться без лишней суеты.",
+      "fun_fact": "В зоопарке дикобразы известны своими колючками — они используют их как естественную защиту.",
+      "image_url": "https://storage.moscowzoo.ru/storage/647edc2a70bb5462366280fc/images/animals/74411733-226e-4b61-a1ce-9482f18f94a2.jpeg"
+    },
+    {
+      "id": "wolf",
+      "name": "Волк",
+      "description": "Тебе важны свобода, порядок и верность своей стае.",
+      "fun_fact": "Волки координируют действия с помощью сигналов и воющего «языка».",
+      "image_url": "https://storage.moscowzoo.ru/storage/647edc2a70bb5462366280fc/images/animals/2237f71d-8864-4b26-b024-d22dab76e196.jpg"
+    },
+    {
+      "id": "red_panda",
+      "name": "Рыжая панда",
+      "description": "Твой характер сочетает любопытство и уют. Ты умеешь находить радость в мелочах.",
+      "fun_fact": "Рыжие панды много времени проводят на деревьях и питаются в том числе бамбуком.",
+      "image_url": "https://storage.moscowzoo.ru/storage/647edc2a70bb5462366280fc/images/animals/d90c2e81-d57a-4cc3-9cd1-4fde00ba5360.jpeg"
+    },
+    {
+      "id": "giraffe",
+      "name": "Жираф",
+      "description": "Ты смотришь «издалека»: планируешь, замечаешь детали и любишь ясность.",
+      "fun_fact": "Жирафы используют язык, чтобы тянуться к листьям — он очень подвижный.",
+      "image_url": "https://storage.moscowzoo.ru/storage/647edc2a70bb5462366280fc/images/animals/576596be-b3dc-427c-9b7c-a04de9cb1d4e.jpg"
+    },
+    {
+      "id": "otter",
+      "name": "Выдра",
+      "description": "Тебя вдохновляют движение, дружелюбие и умение превращать день в приключение.",
+      "fun_fact": "Выдры часто играют и держатся группами — это помогает им адаптироваться.",
+      "image_url": "https://storage.moscowzoo.ru/storage/647edc2a70bb5462366280fc/images/animals/b2216ada-e19e-48f6-a598-f5e40bddb3c0.jpg"
+    },
+    {
+      "id": "meerkat",
+      "name": "Сурикат",
+      "description": "Ты быстро соображаешь, замечаешь риски и умеешь держать компанию — даже «в дозоре».",
+      "fun_fact": "Сурикаты живут группами и часто выполняют роль «сторожа», наблюдая за окрестностями.",
+      "image_url": "https://storage.moscowzoo.ru/storage/647edc2a70bb5462366280fc/images/animals/b184b0be-9537-4b67-be4a-f5b82278de8a.jpeg"
+    }
+  ],
+  "questions": [
+    {
+      "id": "q1",
+      "text": "Где бы тебе было комфортнее всего?",
+      "caption": "Выбери вариант, который ближе к тебе:",
+      "options": [
+        {
+          "id": "o_forest",
+          "text": "В тени деревьев и среди зелени",
+          "scores": {"red_panda": 3, "wolf": 1}
+        },
+        {
+          "id": "o_open",
+          "text": "В открытом пространстве, где всё видно",
+          "scores": {"meerkat": 3, "wolf": 2}
+        },
+        {
+          "id": "o_river",
+          "text": "Рядом с водой и чтобы можно было «плескаться»",
+          "scores": {"otter": 3, "wolf": 1}
+        },
+        {
+          "id": "o_high",
+          "text": "Там, где можно смотреть далеко и выше",
+          "scores": {"giraffe": 3}
+        }
+      ]
+    },
+    {
+      "id": "q2",
+      "text": "Как ты обычно реагируешь на стресс?",
+      "caption": null,
+      "options": [
+        {
+          "id": "o_calm",
+          "text": "Сохраняю спокойствие и ищу безопасный выход",
+          "scores": {"porcupine": 3, "giraffe": 1}
+        },
+        {
+          "id": "o_action",
+          "text": "Действую быстро: соберусь и возьму дело в руки",
+          "scores": {"wolf": 3, "meerkat": 1}
+        },
+        {
+          "id": "o_play",
+          "text": "Переключаюсь на «движение» и игру",
+          "scores": {"otter": 3, "red_panda": 1}
+        },
+        {
+          "id": "o_observe",
+          "text": "Наблюдаю, оцениваю и принимаю решение потом",
+          "scores": {"meerkat": 3, "giraffe": 2}
+        }
+      ]
+    },
+    {
+      "id": "q3",
+      "text": "Что тебе важнее: команда или самостоятельность?",
+      "caption": null,
+      "options": [
+        {
+          "id": "o_team",
+          "text": "Команда. Сильнее вместе",
+          "scores": {"wolf": 3, "meerkat": 2, "otter": 1}
+        },
+        {
+          "id": "o_alone",
+          "text": "Самостоятельность, но я ценю тех, кто рядом",
+          "scores": {"porcupine": 3, "giraffe": 2}
+        },
+        {
+          "id": "o_balance",
+          "text": "Баланс: иногда уединяюсь, иногда включаюсь",
+          "scores": {"red_panda": 3, "otter": 2}
+        }
+      ]
+    },
+    {
+      "id": "q4",
+      "text": "Выбери любимую еду: что было бы «самым твоим»?",
+      "caption": "Без скуки, только вайб:",
+      "options": [
+        {
+          "id": "o_bamboo",
+          "text": "Бамбук и всё натуральное",
+          "scores": {"red_panda": 3}
+        },
+        {
+          "id": "o_meat",
+          "text": "Что-то с характером: мясо или охота",
+          "scores": {"wolf": 3}
+        },
+        {
+          "id": "o_fish",
+          "text": "Рыбка/вода и «чистые» вкусы",
+          "scores": {"otter": 3}
+        },
+        {
+          "id": "o_leaves",
+          "text": "Листочки и зелень",
+          "scores": {"giraffe": 3, "porcupine": 1}
+        },
+        {
+          "id": "o_insects",
+          "text": "Вариативно: от насекомых до неожиданного",
+          "scores": {"meerkat": 3, "porcupine": 1}
+        }
+      ]
+    }
+  ]
+}
