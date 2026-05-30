@@ -1,0 +1,1484 @@
+/* ========== ОБЩИЕ СТИЛИ ========== */
+body {
+  background: var(--text-white);
+  font-family: "Montserrat", Helvetica, sans-serif;
+}
+
+/* ========== ШАПКА ========== */
+.header {
+  background: var(--bg-white);
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.header__container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 16px 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.header__logo img {
+  height: 36px;
+}
+
+.header__nav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.header__link {
+  font-family: var(--xl-link1-medium-font-family);
+  font-weight: var(--xl-link1-medium-font-weight);
+  font-size: var(--xl-link1-medium-font-size);
+  color: var(--text-primary);
+  text-decoration: none;
+}
+
+.header__dropdown {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.header__button {
+  background: #e3f5f5;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 4px;
+  font-family: var(--desktop-button2-font-family);
+  font-weight: var(--desktop-button2-font-weight);
+  font-size: var(--desktop-button2-font-size);
+  color: var(--main-03b2a5);
+  cursor: pointer;
+}
+
+.header__line {
+  height: 1px;
+  background: #e5e7eb;
+}
+
+/* ========== ХЛЕБНЫЕ КРОШКИ ========== */
+.breadcrumbs {
+  max-width: 1200px;
+  margin: 20px auto;
+  padding: 0 20px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.breadcrumbs__link {
+  font-family: "Montserrat-Regular", Helvetica;
+  font-size: 12px;
+  color: #333333b2;
+  text-decoration: none;
+}
+
+.breadcrumbs__current {
+  font-family: "Montserrat-Regular", Helvetica;
+  font-size: 12px;
+  color: #333333b2;
+}
+
+.breadcrumbs__arrow {
+  color: #ccc;
+  margin-left: 8px;
+}
+
+/* ========== ОСНОВНАЯ СЕТКА (2 колонки) ========== */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 20px;
+  display: grid;
+  grid-template-columns: 1fr 282px;
+  gap: 48px;
+}
+
+@media (max-width: 1024px) {
+  .page {
+    grid-template-columns: 1fr;
+    gap: 40px;
+  }
+}
+
+/* ========== СТАТЬЯ ========== */
+.article {
+  max-width: 690px;
+}
+
+.article__title {
+  font-family: var(--h1-48-56-font-family);
+  font-weight: var(--h1-48-56-font-weight);
+  font-size: clamp(32px, 5vw, 48px);
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin: 32px 0 20px;
+}
+
+.article__meta {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 32px;
+  color: #494949;
+  font-size: 14px;
+}
+
+.article__main-image {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  margin-bottom: 32px;
+}
+
+.article__h3 {
+  font-family: var(--h3-24-32-font-family);
+  font-weight: var(--h3-24-32-font-weight);
+  font-size: clamp(20px, 4vw, 24px);
+  color: var(--text-primary);
+  margin: 32px 0 16px;
+}
+
+.article__text {
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin: 16px 0;
+}
+
+/* ========== ЦИТАТЫ ========== */
+/* Цитата - текст заходит под кавычку */
+.quote-box {
+  background: var(--blueb-80);
+  padding: 24px;
+  border-radius: 16px;
+  margin: 24px 0;
+  overflow: hidden;
+}
+
+.quote-box__icon-wrapper {
+  float: left;  /* ключевой момент! иконка всплывает влево */
+  margin-right: 8px;
+  margin-top: 4px;
+}
+
+.quote-box__icon {
+  width: 56px;
+  height: 36px;
+  display: block;
+}
+
+.quote-box__content {
+  overflow: hidden;  /* чтобы текст не вылезал */
+}
+
+.quote-box__text {
+  font-family: "Montserrat-Italic", Helvetica;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+
+.quote-box__author {
+  font-family: var(--h5-bold-16-24-font-family);
+  font-weight: var(--h5-bold-16-24-font-weight);
+  font-size: var(--h5-bold-16-24-font-size);
+  color: var(--text-primary);
+  font-style: normal;
+  text-align: left;
+}
+
+/* Точное воспроизведение старого CSS */
+.quote-frame {
+  position: relative;
+  align-self: stretch;
+  width: 100%;
+  height: 168px;
+  margin: 24px 0;
+}
+
+.quote-frame__vector {
+  position: absolute;
+  top: calc(50% - 84px);
+  left: calc(50% - 120px);
+  width: 240px;
+  height: 168px;
+}
+
+.quote-frame__text {
+  position: absolute;
+  top: 24px;
+  left: 102px;
+  width: 485px;
+  max-width: calc(100% - 40px);
+  font-family: "Montserrat-Italic", Helvetica;
+  font-weight: 400;
+  font-style: italic;
+  color: var(--text-primary);
+  font-size: 16px;
+  text-align: center;
+  letter-spacing: 0;
+  line-height: 24px;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .quote-frame__text {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  .quote-frame__vector {
+    top: calc(50% - 84px);
+    left: calc(50% - 120px);
+  }
+}
+
+@media (max-width: 480px) {
+  .quote-frame {
+    height: 200px;
+  }
+  
+  .quote-frame__vector {
+    width: 200px;
+    height: 140px;
+    top: calc(50% - 70px);
+    left: calc(50% - 100px);
+  }
+}
+
+@media (max-width: 600px) {
+  .quote-box__icon-wrapper {
+    float: none;
+    margin-bottom: 8px;
+  }
+  
+  .quote-box__author {
+    text-align: left;
+  }
+}
+
+/* ========== БЛОК ИЗОБРАЖЕНИЕ + ТЕКСТ ========== */
+.image-block {
+  display: flex;
+  gap: 24px;
+  margin: 32px 0;
+  align-items: center;
+}
+
+.image-block__img {
+  width: 282px;
+  height: auto;
+  border-radius: 16px;
+}
+
+.image-block__text {
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+@media (max-width: 768px) {
+  .image-block {
+    flex-direction: column;
+  }
+  .image-block__img {
+    width: 100%;
+  }
+}
+
+/* ========== PEOPLE БЛОК (картинка с подписью) ========== */
+.people-block {
+  margin: 32px 0;
+}
+
+.people-block__image {
+  width: 100%;
+  border-radius: 16px;
+}
+
+.people-block__caption {
+  font-family: var(--xl-text-3-font-family);
+  font-weight: var(--xl-text-3-font-weight);
+  font-size: var(--xl-text-3-font-size);
+  color: #868686;
+  margin-top: 12px;
+  text-align: center;
+}
+
+/* ========== СОДЕРЖАНИЕ (теперь в левой колонке) ========== */
+/* Содержание - белый фон, зелёные точки */
+.contents {
+  background: white;  /* ← белый фон */
+  border-radius: 16px;
+  padding: 24px;
+  margin: 32px 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.contents__title {
+  font-family: var(--h5-bold-16-24-font-family);
+  font-weight: var(--h5-bold-16-24-font-weight);
+  font-size: var(--h5-bold-16-24-font-size);
+  color: var(--text-primary);
+  margin-bottom: 20px;
+}
+
+/* Базовый элемент содержания */
+.contents__item {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+/* Зелёная точка */
+.contents__circle {
+  width: 8px;
+  height: 8px;
+  background: var(--main-button);  /* зелёный */
+  border-radius: 50%;
+  margin-top: 8px;
+  flex-shrink: 0;
+}
+
+/* Ссылка */
+.contents__link {
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: #333;
+  text-decoration: underline;
+}
+
+/* Уровень 2 (сдвиг вправо) */
+.contents__item--level2 {
+  margin-left: 24px;  /* сдвиг */
+}
+
+/* Подзаголовки уровня 3 (без точки, ещё правее) */
+.contents__subitem--level3 {
+  margin-left: 48px;  /* двойной сдвиг */
+  margin-bottom: 6px;
+}
+
+.contents__subitem--level4 {
+  margin-left: 60px;  /* двойной сдвиг */
+  margin-bottom: 6px;
+}
+
+.contents__subitem--level5 {
+  margin-left: 72px;  /* двойной сдвиг */
+  margin-bottom: 6px;
+}
+
+.contents__subitem--level3 .contents__link .contents__subitem--level4 .contents__subitem--level5 {
+  font-size: 14px;
+  color: #555;
+  text-decoration: underline;
+}
+
+/* ========== УПРАЖНЕНИЯ ========== */
+.exercise {
+  padding: 24px;
+  border-radius: 16px;
+  margin: 32px 0;
+}
+
+.exercise--yellow {
+  background: var(--statusyellowewhite);
+}
+
+.exercise--orange {
+  background: var(--statusorangewhite);
+}
+
+.exercise--teal {
+  background: #03b2a51a;
+}
+
+.exercise__title {
+  font-family: var(--h5-bold-16-24-font-family);
+  font-weight: var(--h5-bold-16-24-font-weight);
+  font-size: var(--h5-bold-16-24-font-size);
+  color: var(--text-primary);
+  margin-bottom: 8px;
+}
+
+.exercise__text {
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* ========== СПИСОК С КРУЖКАМИ ========== */
+.list-item {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0;
+}
+
+.list-item__circle {
+  width: 24px;
+  height: 24px;
+  flex-shrink: 0;
+  position: relative;
+}
+
+.list-item__circle::after {
+  content: "";
+  position: absolute;
+  top: 8px;
+  left: 8px;
+  width: 8px;
+  height: 8px;
+  background: var(--main-button);
+  border-radius: 50%;
+}
+
+.list-item__text {
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* ========== ДВЕ КОЛОНКИ ========== */
+.two-columns {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin: 32px 0;
+}
+
+.two-columns__item img {
+  width: 100%;
+  border-radius: 16px;
+  margin-bottom: 16px;
+}
+
+.two-columns__item p {
+  font-family: "Montserrat-Medium", Helvetica;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+}
+
+/* Sparkle по центру */
+.sparkle-center {
+  display: flex;
+  justify-content: center;
+  margin: 32px 0;
+}
+
+.sparkle-center__icon {
+  width: 178.75px;
+  height: 32px;
+}
+
+/* Текст под sparkle (по центру) */
+.article__text--center {
+  text-align: left;
+  max-width: 800px;
+  margin: 0 auto 32px auto;
+}
+
+/* Блок с тегами — без линий */
+.tags-block {
+  margin: 32px 0;
+  /* Убираем border-top и border-bottom */
+}
+
+.tags-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tags-row:last-child {
+  margin-bottom: 0;
+}
+
+.tag {
+  font-family: "Montserrat-Regular", Helvetica;
+  font-weight: 400;
+  font-size: 14px;
+  color: #2963a3;
+  cursor: pointer;
+  transition: opacity 0.2s;
+}
+
+.tag:hover {
+  opacity: 0.7;
+}
+
+.tag-separator {
+  color: #ccc;
+  font-size: 14px;
+}
+
+/* Линия-разделитель на всю ширину 1200px */
+.divider-full {
+  width: 100%;
+  max-width: 1200px;
+  height: 1px;
+  background: #e5e7eb;
+  margin: 0 auto 40px auto;
+}
+
+@media (max-width: 768px) {
+  .two-columns {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ========== САЙДБАР ========== */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Баннер синий */
+.banner--blue {
+  background: var(--blueb-95);
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+}
+
+.banner__title {
+  font-family: "Montserrat-Bold", Helvetica;
+  font-size: 18px;
+  margin: 16px 0 12px;
+}
+
+.banner__text {
+  font-size: 14px;
+  line-height: 20px;
+  margin-bottom: 20px;
+}
+
+.banner__button {
+  background: var(--primary-400);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* Карточка психолога */
+.psychologist-card {
+  background: white;
+  border: 1px solid #dedede;
+  border-radius: 16px;
+  padding: 24px;
+  text-align: center;
+  position: relative;
+}
+
+/* Бейджи ВЕРТИКАЛЬНО слева */
+.psychologist-card__badges {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  display: flex;
+  flex-direction: column;  /* ← ВЕРТИКАЛЬНО */
+  gap: 8px;
+  z-index: 1;
+}
+
+.badge {
+  background: #f3f4f8b2;
+  padding: 4px 12px;
+  border-radius: 6px;
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+/* Аватар */
+.psychologist-card__avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 16px;
+}
+
+/* Имя */
+.psychologist-card__name {
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 4px;
+}
+
+/* Профессия */
+.psychologist-card__profession {
+  color: #666;
+  margin-bottom: 8px;
+}
+
+/* Опыт и возраст */
+.psychologist-card__stats {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  color: var(--neutralsn-66);
+  margin-bottom: 16px;
+}
+
+.psychologist-card__stats .dot {
+  width: 4px;
+  height: 4px;
+  background: var(--neutralsn-66);
+  border-radius: 50%;
+  display: inline-block;
+  margin: auto 0;
+}
+
+/* Разделитель */
+.psychologist-card__line {
+  height: 1px;
+  background: #dedede;
+  margin: 16px 0;
+}
+
+/* Темы */
+.psychologist-card__topics {
+  text-align: left;
+  margin-bottom: 20px;
+}
+
+.psychologist-card__topics-title {
+  font-weight: bold;
+  margin-bottom: 12px;
+}
+
+.psychologist-card__topic {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.psychologist-card__topic .circle {
+  width: 8px;
+  height: 8px;
+  background: var(--main-button);
+  border-radius: 50%;
+  display: inline-block;
+}
+
+/* Кнопка */
+.psychologist-card__button {
+  background: var(--primary-400);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+  font-weight: 500;
+}
+
+.psychologist-card__button:hover {
+  opacity: 0.7;
+}
+
+/* Карточка с 8 сессиями */
+.price-card {
+  background: white;
+  border: 1px solid #dedede;
+  border-radius: 24px;
+  overflow: hidden;
+}
+
+.price-card__content {
+  padding: 24px;
+}
+
+.price-card__price {
+  display: flex;
+  align-items: baseline;
+  gap: 4px;
+}
+
+.price-card__price .big {
+  font-size: 24px;
+  font-weight: bold;
+  color: #2963a3;
+}
+
+.price-card__text {
+  font-size: 14px;
+  line-height: 20px;
+  margin: 16px 0;
+}
+
+.price-card__total {
+  font-size: 24px;
+  font-weight: bold;
+  margin: 16px 0;
+}
+
+.price-card__button {
+  background: var(--primary-400);
+  color: white;
+  border: none;
+  padding: 12px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  width: 100%;
+}
+
+/* ========== БЛОК "ОТКЛИКАЕТСЯ ПРОБЛЕМА" (перед футером) ========== */
+.problem-section {
+  max-width: 1200px;
+  margin: 60px auto;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.problem-section__content {
+  flex: 1;
+}
+
+.problem-section__title {
+  font-family: var(--h1-48-56-font-family);
+  font-weight: var(--h1-48-56-font-weight);
+  font-size: clamp(28px, 4vw, 40px);
+  line-height: 1.2;
+  color: var(--text-primary);
+  margin-bottom: 16px;
+}
+
+.problem-section__text {
+  font-family: var(--text-18-26-font-family);
+  font-weight: var(--text-18-26-font-weight);
+  font-size: 16px;
+  line-height: 24px;
+  color: var(--text-primary);
+  margin-bottom: 32px;
+}
+
+.problem-section__button {
+  background: var(--button-1);
+  color: white;
+  border: none;
+  padding: 16px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.problem-section__image {
+  flex: 1;
+  max-width: 520px;
+}
+
+.problem-section__image img {
+  width: 100%;
+  height: auto;
+}
+
+@media (max-width: 768px) {
+  .problem-section {
+    flex-direction: column;
+    text-align: center;
+  }
+}
+
+/* 5. Подвал (Footer) */
+/* Футер как оболочка на всю ширину */
+.footer {
+    background-color: #2b6a9c;
+    color: white;
+    padding: 60px 0 30px;
+    margin-top: 96px;
+    width: 100%; /* Убедитесь, что это не сдерживается контейнером выше */
+}
+
+/* Контейнер-сетка: строго по центру и 1200px */
+.footer__container {
+    max-width: 1200px;
+    margin: 0 auto; /* Центрируем! */
+    padding: 0 20px;
+    display: grid;
+    /* 4 колонки: ссылки, ссылки, форма, соцсети */
+    grid-template-columns: 0.25fr 0.40fr 0.18fr;
+    column-gap: 92px;
+}
+.footer__nav {
+    display: flex;
+    gap: 40px;
+}
+
+.footer__social {
+    display: flex;
+    flex-direction: column; /* Ставим элементы в столбик */
+    align-items: flex-start; /* Выравниваем их по левому краю (или center, если нужно по центру) */
+    gap: 40px; /* отступ 40px между всеми элементами внутри блока */
+}
+
+.footer__icons {
+    display: flex; /* Сами иконки внутри блока ставим в строку */
+    gap: 16px;     /* Расстояние между иконками соцсетей */
+}
+
+.footer__column a {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin-bottom: 15px;
+    font-size: 16px;
+}
+
+/* Стилизация инпута */
+.footer__input-group {
+    display: flex;
+    margin: 20px 0;
+    width: 384px; /* Жестко ограничиваем ширину формы */
+}
+
+.footer__input-group input {
+    padding: 10px;
+    width: 100%;
+    border: none;
+    border-radius: 4px 0 0 4px;
+}
+
+.footer__input-group button {
+    padding: 10px 20px;
+    background: #35B3A9;
+    border: none;
+    color: white;
+}
+
+.footer__bottom {
+    max-width: 1200px;
+    margin: 40px auto 0;
+    padding: 20px 20px 0;
+    border-top: 1px solid rgba(255,255,255,0.2);
+    display: flex;
+    justify-content: flex-start;
+    font-size: 12px;
+    opacity: 0.8;
+    gap: 48px;
+}
+
+.footer__policy {
+    font-size: 12px;           /* Размер как в макете (мелкий) */
+    line-height: 1.4;          /* Межстрочный интервал для читабельности */
+    color: rgba(255, 255, 255, 0.6); /* Белый с прозрачностью 60% — выглядит профессионально */
+    margin-top: 12px;          /* Небольшой отступ от поля ввода */
+    max-width: 440px;          /* Чтобы текст переносился на 3-4 строки, как на фото */
+}
+
+/* ========== АДАПТИВ ДЛЯ ПЛАНШЕТОВ (1024px) ========== */
+@media (max-width: 1024px) {
+  /* Шапка */
+  .header__container {
+    flex-wrap: wrap;
+    justify-content: center;
+    text-align: center;
+  }
+  
+  .header__nav {
+    justify-content: center;
+    gap: 20px;
+  }
+  
+  /* Хлебные крошки */
+  .breadcrumbs {
+    margin: 16px auto;
+  }
+  
+  /* Статья */
+  .article {
+    max-width: 100%;
+  }
+  
+  .article__title {
+    font-size: 36px;
+    text-align: center;
+  }
+  
+  .article__meta {
+    justify-content: center;
+  }
+  
+  /* Цитата с кавычкой */
+  .quote-box__icon {
+    width: 40px;
+    height: 24px;
+  }
+  
+  .quote-box__text {
+    font-size: 15px;
+  }
+  
+  /* Содержание */
+  .contents {
+    padding: 20px;
+  }
+  
+  .contents__link {
+    font-size: 15px;
+  }
+  
+  /* Сайдбар */
+  .sidebar {
+    max-width: 500px;
+    margin: 0 auto;
+  }
+  
+  /* Карточка психолога */
+  .psychologist-card {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Блок "Откликается проблема" */
+  .problem-section {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .problem-section__content {
+    text-align: center;
+  }
+  
+  .problem-section__image {
+    max-width: 400px;
+    margin: 0 auto;
+  }
+  
+  /* Футер */
+  .footer__container {
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+  }
+  
+  .footer__social {
+    align-items: flex-start;
+  }
+}
+
+/* ========== АДАПТИВ ДЛЯ ТЕЛЕФОНОВ (600px) ========== */
+@media (max-width: 600px) {
+  /* Общие отступы */
+  body {
+    padding: 0;
+  }
+  
+  /* Шапка */
+  .header__container {
+    padding: 12px 16px;
+  }
+  
+  .header__logo img {
+    height: 28px;
+  }
+  
+  .header__nav {
+    gap: 12px;
+  }
+  
+  .header__link {
+    font-size: 12px;
+  }
+  
+  .header__button {
+    padding: 8px 16px;
+    font-size: 14px;
+  }
+  
+  /* Хлебные крошки */
+  .breadcrumbs {
+    padding: 0 16px;
+    margin: 12px auto;
+  }
+  
+  .breadcrumbs__link,
+  .breadcrumbs__current {
+    font-size: 10px;
+  }
+  
+  /* Страница */
+  .page {
+    padding: 0 16px;
+    gap: 32px;
+  }
+  
+  /* Статья */
+  .article__title {
+    font-size: 28px;
+    margin: 20px 0 16px;
+  }
+  
+  .article__meta {
+    font-size: 12px;
+    margin-bottom: 20px;
+  }
+  
+  .article__main-image {
+    margin-bottom: 20px;
+  }
+  
+  .article__h3 {
+    font-size: 20px;
+    margin: 24px 0 12px;
+  }
+  
+  .article__text {
+    font-size: 14px;
+    line-height: 22px;
+    margin: 12px 0;
+  }
+  
+  /* Цитата с кавычкой */
+  .quote-box {
+    padding: 16px;
+  }
+  
+  .quote-box__icon-wrapper {
+    float: none;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+  
+  .quote-box__icon {
+    width: 32px;
+    height: 20px;
+    margin: 0 auto;
+  }
+  
+  .quote-box__text {
+    font-size: 14px;
+    line-height: 22px;
+    text-align: center;
+  }
+  
+  .quote-box__author {
+    text-align: center;
+    font-size: 14px;
+  }
+  
+  /* Цитата с кругом */
+  .quote-frame {
+    height: 180px;
+    margin: 16px 0;
+  }
+  
+  .quote-frame__vector {
+    width: 180px;
+    height: 126px;
+    top: calc(50% - 63px);
+    left: calc(50% - 90px);
+  }
+  
+  .quote-frame__text {
+    font-size: 13px;
+    line-height: 20px;
+    width: 85%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+  
+  /* Блок изображение + текст */
+  .image-block {
+    gap: 16px;
+    margin: 24px 0;
+  }
+  
+  .image-block__img {
+    width: 100%;
+  }
+  
+  .image-block__text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  /* People блок */
+  .people-block {
+    margin: 24px 0;
+  }
+  
+  .people-block__caption {
+    font-size: 12px;
+  }
+  
+  /* Содержание */
+  .contents {
+    padding: 16px;
+    margin: 24px 0;
+  }
+  
+  .contents__title {
+    font-size: 16px;
+    margin-bottom: 16px;
+  }
+  
+  .contents__item {
+    gap: 8px;
+    margin-bottom: 10px;
+  }
+  
+  .contents__link {
+    font-size: 13px;
+    line-height: 20px;
+  }
+  
+  .contents__circle {
+    width: 6px;
+    height: 6px;
+    margin-top: 7px;
+  }
+  
+  .contents__item--level2 {
+    margin-left: 16px;
+  }
+  
+  .contents__subitem--level3 {
+    margin-left: 32px;
+  }
+  
+  .contents__subitem--level4 {
+    margin-left: 44px;
+  }
+  
+  .contents__subitem--level5 {
+    margin-left: 56px;
+  }
+  
+  /* Упражнения */
+  .exercise {
+    padding: 16px;
+    margin: 24px 0;
+  }
+  
+  .exercise__title {
+    font-size: 16px;
+  }
+  
+  .exercise__text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  /* Список с кружками */
+  .list-item {
+    gap: 8px;
+    margin: 12px 0;
+  }
+  
+  .list-item__circle {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .list-item__circle::after {
+    width: 6px;
+    height: 6px;
+    top: 7px;
+    left: 7px;
+  }
+  
+  .list-item__text {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  /* Две колонки */
+  .two-columns {
+    gap: 20px;
+    margin: 24px 0;
+  }
+  
+  .two-columns__item p {
+    font-size: 14px;
+    line-height: 22px;
+  }
+  
+  /* Sparkle */
+  .sparkle-center {
+    margin: 24px 0;
+  }
+  
+  .sparkle-center__icon {
+    width: 140px;
+    height: 25px;
+  }
+  
+  .article__text--center {
+    font-size: 14px;
+    line-height: 22px;
+    margin-bottom: 24px;
+  }
+  
+  /* Теги */
+  .tags-block {
+    margin: 24px 0;
+  }
+  
+  .tag {
+    font-size: 12px;
+  }
+  
+  .tag-separator {
+    font-size: 12px;
+  }
+  
+  /* Разделитель */
+  .divider-full {
+    margin-bottom: 24px;
+  }
+  
+  /* Сайдбар */
+  .sidebar {
+    gap: 20px;
+  }
+  
+  /* Баннер синий */
+  .banner--blue {
+    padding: 20px;
+  }
+  
+  .banner__title {
+    font-size: 16px;
+  }
+  
+  .banner__text {
+    font-size: 13px;
+  }
+  
+  /* Карточка психолога */
+  .psychologist-card {
+    padding: 20px;
+  }
+  
+  .psychologist-card__badges {
+    top: 12px;
+    left: 12px;
+    gap: 6px;
+  }
+  
+  .badge {
+    font-size: 10px;
+    padding: 3px 8px;
+  }
+  
+  .psychologist-card__avatar {
+    width: 100px;
+    height: 100px;
+    margin-bottom: 12px;
+  }
+  
+  .psychologist-card__name {
+    font-size: 18px;
+  }
+  
+  .psychologist-card__profession {
+    font-size: 14px;
+  }
+  
+  .psychologist-card__stats {
+    font-size: 12px;
+  }
+  
+  .psychologist-card__topics-title {
+    font-size: 14px;
+  }
+  
+  .psychologist-card__topic {
+    font-size: 12px;
+  }
+  
+  .psychologist-card__button {
+    padding: 10px 16px;
+    font-size: 14px;
+  }
+  
+  /* Карточка с 8 сессиями */
+  .price-card__content {
+    padding: 20px;
+  }
+  
+  .price-card__price .big {
+    font-size: 20px;
+  }
+  
+  .price-card__price span:last-child {
+    font-size: 14px;
+  }
+  
+  .price-card__text {
+    font-size: 13px;
+  }
+  
+  .price-card__total {
+    font-size: 20px;
+  }
+  
+  /* Блок "Откликается проблема" */
+  .problem-section {
+    margin: 40px auto;
+    padding: 0 16px;
+  }
+  
+  .problem-section__title {
+    font-size: 28px;
+  }
+  
+  .problem-section__text {
+    font-size: 14px;
+    margin-bottom: 24px;
+  }
+  
+  .problem-section__button {
+    padding: 12px 20px;
+    font-size: 14px;
+  }
+  
+  /* Футер */
+  .footer {
+    padding: 40px 0 20px;
+    margin-top: 60px;
+  }
+  
+  .footer__container {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    text-align: center;
+  }
+  
+  .footer__nav {
+    flex-direction: column;
+    gap: 24px;
+  }
+  
+  .footer__column {
+    text-align: center;
+  }
+  
+  .footer__column a {
+    font-size: 14px;
+    margin-bottom: 12px;
+  }
+  
+  .footer__subscribe {
+    text-align: center;
+  }
+  
+  .footer__title {
+    font-size: 14px;
+  }
+  
+  .footer__input-group {
+    width: 100%;
+    max-width: 300px;
+    margin: 16px auto;
+  }
+  
+  .footer__input-group input {
+    padding: 10px;
+  }
+  
+  .footer__policy {
+    font-size: 10px;
+  }
+  
+  .footer__social {
+    align-items: center;
+    gap: 24px;
+  }
+  
+  .footer__icons {
+    justify-content: center;
+  }
+  
+  .footer__bottom {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    text-align: center;
+    margin-top: 24px;
+    padding-top: 16px;
+  }
+}
+
+/* ========== ОЧЕНЬ МАЛЕНЬКИЕ ТЕЛЕФОНЫ (400px) ========== */
+@media (max-width: 400px) {
+  .article__title {
+    font-size: 24px;
+  }
+  
+  .quote-frame {
+    height: 200px;
+  }
+  
+  .quote-frame__vector {
+    width: 160px;
+    height: 112px;
+    top: calc(50% - 56px);
+    left: calc(50% - 80px);
+  }
+  
+  .quote-frame__text {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .contents__link {
+    font-size: 12px;
+    line-height: 18px;
+  }
+  
+  .tag {
+    font-size: 11px;
+  }
+  
+  .psychologist-card__badges {
+    top: 8px;
+    left: 8px;
+  }
+  
+  .badge {
+    font-size: 9px;
+    padding: 2px 6px;
+  }
+}
